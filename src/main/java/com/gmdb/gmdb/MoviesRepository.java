@@ -12,6 +12,12 @@ public interface MoviesRepository extends CrudRepository<Movies, Long>{
     List<Movies> findAll();
 
 
-    Movies findById(long id);  
+    Movies findById(long id);
+
+
+    void update(Movies moviesList);
+
+
+    List<Movies> getAllMovies();  
 
 }
