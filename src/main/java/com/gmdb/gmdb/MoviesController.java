@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MoviesController {
 
     @Autowired
-    private MoviesRepository movierepo;
+    private IMoviesRepository movierepo;
 
-    public MoviesController(MoviesRepository movierepo){
+    public MoviesController(IMoviesRepository movierepo){
         this.movierepo = movierepo;
     }
 
