@@ -1,8 +1,10 @@
-package com.gmdb.gmdb;
+package com.gmdb.gmdb.repositories;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import com.gmdb.gmdb.models.Movies;
 
 @Repository
 public interface IMoviesRepository extends CrudRepository<Movies, Long>{

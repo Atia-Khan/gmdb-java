@@ -1,4 +1,4 @@
-package com.gmdb.gmdb;
+package com.gmdb.gmdb.controllers;
 
 import java.util.List;
 
@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.gmdb.gmdb.models.Movies;
+import com.gmdb.gmdb.repositories.IMoviesRepository;
 
 @RestController
 @RequestMapping("/movies")
@@ -39,8 +42,8 @@ public class MoviesController {
     //    so that I can correct errors in previously uploaded movie entries.
     //
 
-    @PostMapping("/updateMovies")
-    public String
+    // @PostMapping("/updateMovies")
+    // public String
     
 
     

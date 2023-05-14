@@ -1,12 +1,16 @@
-package com.gmdb.gmdb;
+package com.gmdb.gmdb.models;
 // import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue; 
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Entity 
+@Entity
+@Getter
+@Setter
 public class Movies {
     // 1. As a user
     //    I can GET a list of movies from GMDB that includes Movie ID | Movie Title | Year Released | Genre | Runtime
@@ -29,38 +33,38 @@ public class Movies {
                     this.movieRuntime = movieRuntime;
     }
 
-    @Override
-    public String toString(){
-        return String.format("Movies[id=%d, title='%s', movieYear=%d, genre='%s', movieRuntime= '%s' ]", id, title, movieYear, genre, movieRuntime);
-    }
+    // @Override
+    // public String toString(){
+    //     return String.format("Movies[id=%d, title='%s', movieYear=%d, genre='%s', movieRuntime= '%s' ]", id, title, movieYear, genre, movieRuntime);
+    // }
 
-    public String getTitle() {
-        return title;
-    }
+    // public String getTitle() {
+    //     return title;
+    // }
 
-    public long getId() {
-        return id;
-    }
+    // public long getId() {
+    //     return id;
+    // }
 
     
 
-    public int getMovieYear() {
-        return movieYear;
-    }
+    // public int getMovieYear() {
+    //     return movieYear;
+    // }
 
   
 
-    public String getGenre() {
-        return genre;
-    }
-
-    // public void setGenre(String genre) {
-    //     this.genre = genre;
+    // public String getGenre() {
+    //     return genre;
     // }
 
-    public String getMovieRuntime() {
-        return movieRuntime;
-    }
+    // // public void setGenre(String genre) {
+    // //     this.genre = genre;
+    // // }
+
+    // public String getMovieRuntime() {
+    //     return movieRuntime;
+    // }
 
     // public void setMovieRuntime(String movieRuntime) {
     //     this.movieRuntime = movieRuntime;
