@@ -1,10 +1,14 @@
 package com.gmdb.gmdb.models;
 
+import java.util.List;
+
 // import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +22,11 @@ public class Movies {
     // so that I can see the list of available movies.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
+    @OneToMany
+    @JoinColumn(name = "Reviews")
+    private List<Reviews> review;
     private String title;
     private int movieYear;
     private String genre;

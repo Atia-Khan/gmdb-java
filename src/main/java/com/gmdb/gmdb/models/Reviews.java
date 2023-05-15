@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,12 +16,16 @@ import lombok.Setter;
 public class Reviews {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private long id;
-    @JoinColumn(name = "id")
-    private long movieId;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movies movieId;
     private String reviewText;
-    @JoinColumn(name = "id")
-    private long userId;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users userId;
 
     public Reviews(String reviewText) {
         // this.id = id;

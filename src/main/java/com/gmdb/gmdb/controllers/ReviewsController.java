@@ -20,7 +20,7 @@ public class ReviewsController {
         this.repo = repo;
     }
 
-    @PostMapping("/addreview")
+    @PostMapping("/add")
     public String addReview(@RequestBody Reviews review) {
         this.repo.save(review);
         return "Review Added";

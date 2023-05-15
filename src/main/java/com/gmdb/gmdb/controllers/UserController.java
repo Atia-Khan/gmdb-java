@@ -20,30 +20,30 @@ import com.gmdb.gmdb.repositories.IUserRepository;
 @RequestMapping("/users")
 
 public class UserController {
-    
+
     @Autowired
     private IUserRepository repo;
 
-    public UserController(IUserRepository repo){
-        this.repo = repo;
-    }
+    // public UserController(IUserRepository repo){
+    // this.repo = repo;
+    // }
 
     @PostMapping("/add")
-    public String addUser(@RequestBody Users user){
+    public String addUser(@RequestBody Users user) {
         this.repo.save(user);
 
-        return "added";//"User has been aded successfully";
+        return "added";// "User has been aded successfully";
     }
 
     @GetMapping("/list")
-    public List<Users> getUser(){
+    public List<Users> getUser() {
         return (List<Users>) this.repo.findAll();
     }
 
     @PostMapping("/update")
-    public String updateUser(@RequestBody Users user){
+    public String updateUser(@RequestBody Users user) {
         Users getUser = this.repo.findById(user.getId()).orElse(null);
-        if(getUser == null){
+        if (getUser == null) {
             return "User not found";
         }
         this.repo.save(user);
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id) {
         this.repo.deleteById(id);
         return "deleted";
     }
