@@ -23,7 +23,7 @@ public class Movies {
     private String genre;
     private String movieRuntime;
 
-    public Movies() {} //why it is used?
+    public Movies() {} 
 
     public Movies( String title, int movieYear, String genre, String movieRuntime){
             
