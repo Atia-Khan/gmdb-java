@@ -53,9 +53,7 @@ public class MoviesController {
         return "Book Deleted! " + moviesList.getTitle();
     }
 
-    /**
-     * @return
-     */
+    
     @GetMapping("/allMovies")
     public List<Movies> getAllMovies(){
         return movierepo.getAllMovies();
