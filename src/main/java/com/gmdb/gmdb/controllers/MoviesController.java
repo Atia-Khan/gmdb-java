@@ -27,7 +27,7 @@ public class MoviesController {
         this.movierepo = movierepo;
     }
 
-    @GetMapping("/showist")
+    @GetMapping("/showlist")
     public List<Movies> ViewAllMovies() {
         return movierepo.findAll();
     }
@@ -44,11 +44,11 @@ public class MoviesController {
     // so that I can correct errors in previously uploaded movie entries.
     //
 
-    @PutMapping("/updateMovies")
-    public String updateMovies(@RequestBody Movies moviesList) {
-        movierepo.update(moviesList);
-        return "MovieList updated as " + moviesList.getTitle();
-    }
+    // @PutMapping("/updateMovies")
+    // public String updateMovies(@RequestBody Movies moviesList) {
+    // movierepo.update(moviesList);
+    // return "MovieList updated as " + moviesList.getTitle();
+    // }
 
     @DeleteMapping("/deleteMovies")
     public String deleteMovie(@RequestBody Movies moviesList) {
@@ -56,8 +56,8 @@ public class MoviesController {
         return "Book Deleted! " + moviesList.getTitle();
     }
 
-    @GetMapping("/allMovies")
-    public List<Movies> getAllMovies() {
-        return movierepo.getAllMovies();
-    }
+    // @GetMapping("/allMovies")
+    // public List<Movies> getAllMovies() {
+    // return movierepo.getAllMovies();
+    // }
 }
