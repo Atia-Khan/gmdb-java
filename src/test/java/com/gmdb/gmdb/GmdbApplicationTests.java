@@ -1,20 +1,76 @@
 package com.gmdb.gmdb;
 
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import com.gmdb.gmdb.controllers.MoviesController;
+import com.gmdb.gmdb.models.Movies;
+import com.gmdb.gmdb.repositories.IMoviesRepository;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import org.springframework.test.context.web.WebAppConfiguration;
 
-
+@AutoConfigureMockMvc
+@WebAppConfiguration
 @SpringBootTest
 public class GmdbApplicationTests {
 
+    // @Autowired
+    private MockMvc mvc;
 	// Stories for this project are shown below in order of value, with the highest value listed first.
     // This microservice will contain the CRUD operations required to interact with the GMDB movie database.
     // Other functionality (e.g. user authentication) is hosted in other microservices.
     //
+    @Autowired
+    private WebApplicationContext context;
+
+    @MockBean
+    IMoviesRepository repo;
+
+    @InjectMocks
+    MoviesController obj;
+
+    @BeforeEach
+    public void setup(){
+        mvc = MockMvcBuilders.webAppContextSetup(context).build();
+        
+    }
+
+
     // 1. As a user
     //    I can GET a list of movies from GMDB that includes Movie ID | Movie Title | Year Released | Genre | Runtime
     //    so that I can see the list of available movies.
     //
+    // @Mock IMoviesRepository repo;
+
+    @Test
+    public void users() throws Exception{
+        List<Movies> user = new ArrayList<>();
+
+        user.add(new Movies("dfssdf",2000,"dsfsdf","sdfdf"));
+        user.add(new Movies("dfssdf",2000,"dsfsdf","sdfdf"));
+
+        when(repo.findAll()).thenReturn(user);
+
+        mvc.perform(get("/movies/showlist")
+        .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
+    }
     // 2. As a user
     //    I can provide a movie ID and get back the record shown in story 1, plus a list of reviews that contains Review ID | Movie ID | Reviewer ID | Review Text | DateTime last modified
     //    so that I can read the reviews for a movie.

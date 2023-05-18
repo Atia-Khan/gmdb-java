@@ -9,12 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 public class Movies {
     // 1. As a user
     // I can GET a list of movies from GMDB that includes Movie ID | Movie Title |
@@ -32,8 +34,7 @@ public class Movies {
     private String genre;
     private String movieRuntime;
 
-    public Movies() {
-    }
+
 
     public Movies(String title, int movieYear, String genre, String movieRuntime) {
 
@@ -43,6 +44,8 @@ public class Movies {
         this.movieRuntime = movieRuntime;
     }
 
+    public Movies() {
+    }
     // @Override
     // public String toString(){
     // return String.format("Movies[id=%d, title='%s', movieYear=%d, genre='%s',

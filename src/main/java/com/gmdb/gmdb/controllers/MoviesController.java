@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gmdb.gmdb.models.Movies;
 import com.gmdb.gmdb.repositories.IMoviesRepository;
 
+import lombok.AllArgsConstructor;
+
 @RestController
+@AllArgsConstructor
 @RequestMapping("/movies")
 
 public class MoviesController {
@@ -22,9 +25,9 @@ public class MoviesController {
     @Autowired
     private IMoviesRepository movierepo;
 
-    public MoviesController(IMoviesRepository movierepo) {
-        this.movierepo = movierepo;
-    }
+    // public MoviesController(IMoviesRepository movierepo) {
+    //     this.movierepo = movierepo;
+    // }
 
     @GetMapping("/showlist")
     public List<Movies> ViewAllMovies() {
