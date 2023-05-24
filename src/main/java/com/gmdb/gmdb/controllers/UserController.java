@@ -35,6 +35,11 @@ public class UserController {
         return "added";// "User has been aded successfully";
     }
 
+    @GetMapping("/get/{id}")
+    public Users getUsrById(@PathVariable long id){
+        return this.repo.findById(id);
+    }
+
     @GetMapping("/list")
     public List<Users> getUser() {
         return (List<Users>) this.repo.findAll();
@@ -42,7 +47,7 @@ public class UserController {
 
     @PostMapping("/update")
     public String updateUser(@RequestBody Users user) {
-        Users getUser = this.repo.findById(user.getId()).orElse(null);
+        Users getUser = this.repo.findById(user.getId());
         if (getUser == null) {
             return "User not found";
         }
