@@ -34,6 +34,13 @@ public class Reviews {
         // this.userId = userId;
     }
 
+    public Reviews(long id, Movies movie, Users user, String reviewText){
+        this.id = id;
+        this.movieId = movie;
+        this.userId = user;
+        this.reviewText = reviewText;
+    }
+
     public Reviews() {
     }
 }
